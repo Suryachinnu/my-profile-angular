@@ -1,0 +1,53 @@
+<div class="main" *ngIf="user">
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{user?.name}}</mat-card-title>
+        <mat-card-subtitle>{{user?.designation}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+         <mat-divider></mat-divider>
+        <mat-list>
+        <div mat-subheader>Info</div>
+        <mat-divider></mat-divider>
+        <mat-list-item><span  mat-subheader>Current Employer: </span> {{user?.company}}</mat-list-item>
+        <mat-list-item><span  mat-subheader>Years of Experience: </span> {{user?.experience}}</mat-list-item>
+        <mat-list-item><span  mat-subheader>Qualification: </span>{{user?.qualification}}</mat-list-item>
+        <div mat-subheader>Hobbies</div>
+        <mat-list-item *ngFor="let hobby of hobbies">
+          {{hobby.name}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <div mat-subheader>Interests</div>
+        <mat-list-item *ngFor="let item of interest">
+          <div mat-line>{{item.name}}</div>
+          <div mat-line> {{item.description}} </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+
+  <mat-divider></mat-divider>
+  <div mat-subheader>User Form </div>
+  <form [formGroup]="userForm" class="form" *ngIf="userForm">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="designation">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Company</mat-label>
+        <input matInput  formControlName="company" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Experience</mat-label>
+        <input matInput formControlName="experience">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Qualification</mat-label>
+        <input matInput  formControlName="qualification">
+      </mat-form-field>
+    </form>
+</mat-card>
+</div>
